@@ -1,6 +1,7 @@
 package com.github.vtspp.resources;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.vtspp.domain.User;
+import com.github.vtspp.dto.UserDTO;
 import com.github.vtspp.services.UserService;
 
 @RestController
@@ -20,9 +22,10 @@ public class UserResource {
 	UserService userService;
 	
 	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
+	public ResponseEntity<List<UserDTO>> findAll(){
 		List<User> list = userService.listAll();
-		return new ResponseEntity<>(list, HttpStatus.OK);
+		List<UserDTO> listDTO = list.stream().map( dto -> new UserDTO(dto)).collect(Collectors.toList());
+		return new ResponseEntity<>(listDTO, HttpStatus.OK);
 	}
 
 }
