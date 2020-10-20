@@ -27,13 +27,27 @@ public class UserService {
 		}
 		return userRepository.findById(id).get();
 	}
-	
+
 	public User insert(User user) {
 		return userRepository.insert(user);
 	}
-	
+
 	public User fromDTO(UserDTO userDTO) {
 		return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
+	}
+
+	public User update(User user) {
+		User u = findById(user.getId());
+		u.setName(user.getName());
+		u.setEmail(user.getEmail());
+		userRepository.save(u);
+		return u;
+
+	}
+
+	public void delete(String id) {
+		findById(id);
+		userRepository.deleteById(id);
 	}
 
 }
