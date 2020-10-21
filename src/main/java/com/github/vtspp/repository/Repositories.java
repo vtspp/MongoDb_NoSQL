@@ -1,8 +1,9 @@
 package com.github.vtspp.repository;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 
-@Repository
-public interface Repositories<T, K>{
+@NoRepositoryBean
+public interface Repositories<T, K> extends MongoRepository<T, K>{
 
 }

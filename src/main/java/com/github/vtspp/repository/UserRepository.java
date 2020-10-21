@@ -1,9 +1,10 @@
 package com.github.vtspp.repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 import com.github.vtspp.domain.User;
 
-public interface UserRepository extends Repositories<User, String>, MongoRepository<User, String>{
+@Repository
+public interface UserRepository extends Repositories<User, String>{
 
 }
