@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.github.vtspp.domain.Post;
 import com.github.vtspp.domain.User;
 import com.github.vtspp.dto.UserDTO;
 import com.github.vtspp.services.UserService;
@@ -60,6 +61,12 @@ public class UserResource {
 	public ResponseEntity<Void> delete(@PathVariable String id){
 		userService.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@GetMapping(path = "/{id}/posts")
+	public ResponseEntity<List<Post>> findPost(@PathVariable String id){
+		return new ResponseEntity<>(userService.findById(id).getPosts(), HttpStatus.OK);
+	
 	}
 
 }
