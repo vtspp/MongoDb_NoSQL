@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.github.vtspp.domain.Post;
 import com.github.vtspp.domain.User;
+import com.github.vtspp.dto.AuthorDTO;
 import com.github.vtspp.repository.impl.PostRepositoryImpl;
 import com.github.vtspp.repository.impl.UserRepositoryImpl;
 
@@ -37,8 +38,8 @@ public class Instantiation implements CommandLineRunner{
 				                                 new User(null, "Jiraya", "jiraya@gmail.com")));
 		
 		
-		postRepositoryImpl.saveAll(Arrays.asList(new Post(null, LocalDateTime.of(2020, 10, 03, 12, 30), "Partiu viagem", "Vou viajar para São Paulo. Abraços !",userRepositoryImpl.findAll().get(0)),
-				                                 new Post(null, LocalDateTime.of(2020, 12, 28, 8, 00), "Partiu viagem", "Vou viajar para Rio de Janeiro. Abraços !",userRepositoryImpl.findAll().get(1))));
+		postRepositoryImpl.saveAll(Arrays.asList(new Post(null, LocalDateTime.of(2020, 10, 03, 12, 30), "Partiu viagem", "Vou viajar para São Paulo. Abraços !", new AuthorDTO(userRepositoryImpl.findAll().get(0))),
+				                                 new Post(null, LocalDateTime.of(2020, 12, 28, 8, 00), "Partiu viagem", "Vou viajar para Rio de Janeiro. Abraços !", new AuthorDTO(userRepositoryImpl.findAll().get(1)))));
 		
 		
 	}
