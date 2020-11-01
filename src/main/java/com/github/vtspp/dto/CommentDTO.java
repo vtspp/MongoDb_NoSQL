@@ -10,7 +10,8 @@ public class CommentDTO implements Serializable{
 	private LocalDateTime date;
 	private AuthorDTO author;
 	
-	public CommentDTO() {}
+	public CommentDTO() {
+	}
 
 	public CommentDTO(String text, LocalDateTime date, AuthorDTO author) {
 		this.text = text;
