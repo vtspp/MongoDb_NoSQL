@@ -62,12 +62,12 @@ public class Post implements Serializable{
 		this.body = body;
 	}
 
-	public AuthorDTO getUser() {
+	public AuthorDTO getAuthor() {
 		return author;
 	}
 
-	public void setUser(AuthorDTO user) {
-		this.author = user;
+	public void setAuthor(AuthorDTO author) {
+		this.author = author;
 	}
 
 	@Override
